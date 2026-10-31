@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bảo trì dự đoán</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Predictive Maintenance</h1>
+    <nav>
+      <a href="#overview">Tổng quan</a>
+      <a href="#alerts">Cảnh báo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Bản thử nghiệm</p>
+      <h2>Theo dõi thiết bị trước khi sự cố xảy ra</h2>
+      <p>Trang mẫu để minh họa một giao diện giám sát bảo trì dự đoán.</p>
+      <button id="demoButton">Chạy thử phân tích</button>
+    </section>
+
+    <section id="overview" class="panel-grid">
+      <article class="card"><span>Thiết bị</span><strong>12</strong></article>
+      <article class="card"><span>Đang theo dõi</span><strong>08</strong></article>
+      <article class="card"><span>Cảnh báo</span><strong>03</strong></article>
+    </section>
+
+    <section id="alerts" class="placeholder-section">
+      <h2>Cảnh báo gần đây</h2>
+      <p id="statusText">Chưa có dữ liệu kết nối thật.</p>
+      <!-- TODO: bổ sung bảng dữ liệu cảm biến và bộ lọc -->
+    </section>
+  </main>
+
+  <footer>Prototype - chưa hoàn thiện</footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

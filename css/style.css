@@ -1,0 +1,35 @@
+:root {
+  font-family: Arial, sans-serif;
+  color: #183047;
+  background: #eef4f7;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: #123b52;
+  color: white;
+}
+
+nav a { color: white; margin-left: 16px; text-decoration: none; }
+
+main { width: min(1000px, 88%); margin: 40px auto; }
+
+.hero, .placeholder-section { padding: 36px; background: white; border-radius: 12px; }
+.hero { border-left: 6px solid #e68a2e; }
+.eyebrow { color: #c26812; text-transform: uppercase; letter-spacing: .08em; }
+button { padding: 10px 16px; border: 0; border-radius: 6px; background: #e68a2e; color: white; cursor: pointer; }
+
+.panel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+.card { padding: 24px; background: #dcebf0; border-radius: 10px; }
+.card span, .card strong { display: block; }
+.card strong { margin-top: 8px; font-size: 2rem; }
+footer { padding: 28px; text-align: center; color: #657783; }
+
+/* TODO: bổ sung responsive layout và trạng thái cảnh báo */

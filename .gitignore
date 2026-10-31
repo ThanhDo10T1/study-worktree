@@ -1,0 +1,8 @@
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+
+# Local files
+.env
+node_modules/
