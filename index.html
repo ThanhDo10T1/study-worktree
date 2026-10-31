@@ -3,40 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bảo trì dự đoán</title>
+  <meta name="description" content="ForgeSight — bảng điều hành bảo trì dự đoán cho nhà máy." />
+  <title>ForgeSight | Bảo trì dự đoán</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <h1>Predictive Maintenance</h1>
-    <nav>
-      <a href="#overview">Tổng quan</a>
-      <a href="#alerts">Cảnh báo</a>
-    </nav>
-  </header>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Điều hướng chính">
+      <a class="brand" href="#overview" aria-label="ForgeSight, về tổng quan">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>ForgeSight</span>
+      </a>
+      <div class="workspace-switcher">
+        <span class="status-dot"></span>
+        <span><small>Nhà máy</small><strong>Hòa Phát · Khu A</strong></span>
+        <span class="chevron" aria-hidden="true">⌄</span>
+      </div>
+      <nav class="nav-groups">
+        <div class="nav-group">
+          <p>Điều hành</p>
+          <a class="nav-link active" href="#overview"><span class="nav-icon">⌂</span>Tổng quan</a>
+          <a class="nav-link" href="#equipment"><span class="nav-icon">◫</span>Thiết bị <span class="nav-count">12</span></a>
+          <a class="nav-link" href="#alerts"><span class="nav-icon">!</span>Cảnh báo <span class="nav-count alert-count">3</span></a>
+        </div>
+        <div class="nav-group">
+          <p>Phân tích</p>
+          <a class="nav-link" href="#maintenance"><span class="nav-icon">↗</span>Lịch bảo trì</a>
+          <a class="nav-link" href="#reports"><span class="nav-icon">▤</span>Báo cáo</a>
+        </div>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="nav-link" href="#settings"><span class="nav-icon">⚙</span>Cài đặt</a>
+        <div class="user-row"><span class="avatar">NA</span><span><strong>Ngọc Anh</strong><small>Quản lý vận hành</small></span><span class="more">···</span></div>
+      </div>
+    </aside>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Bản thử nghiệm</p>
-      <h2>Theo dõi thiết bị trước khi sự cố xảy ra</h2>
-      <p>Trang mẫu để minh họa một giao diện giám sát bảo trì dự đoán.</p>
-      <button id="demoButton">Chạy thử phân tích</button>
-    </section>
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <button class="mobile-menu" type="button" aria-label="Mở menu">☰</button>
+        <div class="breadcrumb">Điều hành <span>/</span> Tổng quan</div>
+        <div class="top-actions"><span class="sync-state"><i></i> Đồng bộ 2 phút trước</span><button class="icon-button" type="button" aria-label="Thông báo">♢<b>3</b></button><button class="avatar top-avatar" type="button" aria-label="Mở hồ sơ">NA</button></div>
+      </header>
 
-    <section id="overview" class="panel-grid">
-      <article class="card"><span>Thiết bị</span><strong>12</strong></article>
-      <article class="card"><span>Đang theo dõi</span><strong>08</strong></article>
-      <article class="card"><span>Cảnh báo</span><strong>03</strong></article>
-    </section>
+      <div class="content-wrap">
+        <section class="page-heading">
+          <div><h1>Tổng quan vận hành</h1><p>Theo dõi sức khỏe thiết bị và xử lý rủi ro trước khi dây chuyền dừng.</p></div>
+          <div class="heading-actions"><label class="date-select">7 ngày qua <select id="periodSelect" aria-label="Khoảng thời gian"><option value="7">7 ngày qua</option><option value="30">30 ngày qua</option><option value="90">90 ngày qua</option></select></label><button class="primary-button" id="analysisButton" type="button"><span>＋</span> Chạy phân tích</button></div>
+        </section>
 
-    <section id="alerts" class="placeholder-section">
-      <h2>Cảnh báo gần đây</h2>
-      <p id="statusText">Chưa có dữ liệu kết nối thật.</p>
-      <!-- TODO: bổ sung bảng dữ liệu cảm biến và bộ lọc -->
-    </section>
-  </main>
+        <section class="metric-grid" aria-label="Chỉ số vận hành">
+          <article class="metric"><div class="metric-label">Tổng thiết bị <span class="metric-help">?</span></div><strong id="totalEquipment">12</strong><p><span class="neutral-mark">●</span> 12 thiết bị đã kết nối</p></article>
+          <article class="metric"><div class="metric-label">Sức khỏe tốt</div><strong>75<span class="unit">%</span></strong><p class="positive">↑ 8% <span>so với tuần trước</span></p></article>
+          <article class="metric metric-warn"><div class="metric-label">Cần chú ý</div><strong id="attentionCount">3</strong><p class="negative">↑ 1 <span>so với tuần trước</span></p></article>
+          <article class="metric"><div class="metric-label">Thời gian hoạt động</div><strong>98.4<span class="unit">%</span></strong><p class="positive">↑ 0.6% <span>so với tuần trước</span></p></article>
+        </section>
 
-  <footer>Prototype - chưa hoàn thiện</footer>
+        <section class="overview-grid">
+          <article class="panel health-panel">
+            <div class="panel-header"><div><h2>Chỉ số sức khỏe thiết bị</h2><p id="chartSummary">Xu hướng 7 ngày gần nhất · 3 cảnh báo cần xử lý</p></div><div class="legend"><span><i class="legend-line"></i>Điểm sức khỏe</span><button class="more-button" aria-label="Tùy chọn biểu đồ">···</button></div></div>
+            <div class="chart-wrap"><div class="chart-y-axis"><span>100</span><span>80</span><span>60</span><span>40</span><span>20</span></div><svg id="healthChart" viewBox="0 0 760 250" role="img" aria-label="Biểu đồ điểm sức khỏe thiết bị trong 7 ngày"><g class="grid-lines"><line x1="0" y1="10" x2="760" y2="10"/><line x1="0" y1="67" x2="760" y2="67"/><line x1="0" y1="124" x2="760" y2="124"/><line x1="0" y1="181" x2="760" y2="181"/><line x1="0" y1="238" x2="760" y2="238"/></g><path id="chartArea" class="chart-area" d="M0,35 L126,46 L253,52 L380,76 L506,64 L633,90 L760,80 L760,250 L0,250 Z"/><path id="chartLine" class="chart-line" d="M0,35 L126,46 L253,52 L380,76 L506,64 L633,90 L760,80"/><g id="chartPoints" class="chart-points"><circle cx="0" cy="35" r="4"/><circle cx="126" cy="46" r="4"/><circle cx="253" cy="52" r="4"/><circle cx="380" cy="76" r="4"/><circle cx="506" cy="64" r="4"/><circle cx="633" cy="90" r="4"/><circle cx="760" cy="80" r="4"/></g></svg><div class="chart-x-axis"><span>Thứ 2</span><span>Thứ 3</span><span>Thứ 4</span><span>Thứ 5</span><span>Thứ 6</span><span>Thứ 7</span><span>Hôm nay</span></div></div>
+            <div class="chart-insight"><span class="insight-mark">↗</span><p><strong>Xu hướng tích cực.</strong> Điểm sức khỏe trung bình tăng 4.2 điểm trong 7 ngày qua.</p><button class="text-button" type="button" data-toast="Đang mở lịch sử chỉ số...">Xem chi tiết <span>→</span></button></div>
+          </article>
+          <article class="panel alert-panel" id="alerts">
+            <div class="panel-header"><div><h2>Cảnh báo cần xử lý</h2><p>Thiết bị có rủi ro cao nhất hiện tại</p></div><span class="alert-badge" id="alertBadge">3 cảnh báo</span></div>
+            <div class="alert-list" id="alertList"></div>
+            <button class="panel-footer-link" type="button" data-toast="Đã mở toàn bộ cảnh báo">Xem tất cả cảnh báo <span>→</span></button>
+          </article>
+        </section>
+
+        <section class="equipment-section" id="equipment">
+          <div class="section-heading"><div><h2>Tình trạng thiết bị</h2><p>Danh sách thiết bị theo dõi trong khu vực Hòa Phát · Khu A</p></div><button class="outline-button" type="button" data-toast="Đã xuất báo cáo CSV">Xuất dữ liệu <span>↗</span></button></div>
+          <div class="equipment-toolbar"><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Tìm thiết bị..." aria-label="Tìm thiết bị" /></label><div class="filter-group"><select id="statusFilter" aria-label="Lọc theo trạng thái"><option value="all">Tất cả trạng thái</option><option value="healthy">Tốt</option><option value="watch">Theo dõi</option><option value="critical">Nguy hiểm</option></select><select aria-label="Lọc theo khu vực"><option>Tất cả khu vực</option><option>Xưởng A</option><option>Xưởng B</option></select></div></div>
+          <div class="table-wrap"><table><caption class="sr-only">Danh sách tình trạng thiết bị</caption><thead><tr><th>Thiết bị</th><th>Khu vực</th><th>Điểm sức khỏe</th><th>Trạng thái</th><th>Hoạt động gần nhất</th><th><span class="sr-only">Thao tác</span></th></tr></thead><tbody id="equipmentRows"></tbody></table><div class="empty-state" id="emptyState" hidden>Không tìm thấy thiết bị phù hợp.</div></div>
+        </section>
+        <footer class="footer"><span>ForgeSight · Dữ liệu mô phỏng cho bản thử nghiệm</span><span>Cập nhật lần cuối: hôm nay, 09:42</span></footer>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="js/app.js"></script>
 </body>
 </html>

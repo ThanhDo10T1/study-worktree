@@ -1,12 +1,12 @@
-# Predictive Maintenance Prototype
+# ForgeSight — Predictive Maintenance Dashboard
 
-Bộ khung HTML tĩnh sơ khai cho một trang web về bảo trì dự đoán.
+Dashboard HTML/CSS/JavaScript thuần cho đội vận hành nhà máy: theo dõi sức khỏe thiết bị, cảnh báo rủi ro và lọc danh sách thiết bị.
 
 ## Cấu trúc
 
-- `index.html`: trang chính
-- `css/style.css`: kiểu dáng cơ bản
-- `js/app.js`: tương tác mẫu
-- `assets/`: nơi để ảnh hoặc dữ liệu mẫu sau này
+- `index.html`: shell và các vùng dữ liệu của dashboard
+- `css/style.css`: giao diện responsive, trạng thái và layout
+- `js/app.js`: dữ liệu mô phỏng, biểu đồ, lọc tìm kiếm và tương tác
+- `assets/`: nơi để bổ sung tài nguyên khi kết nối dữ liệu thật
 
-Mở `index.html` trực tiếp trong trình duyệt để xem thử. Đây chưa phải sản phẩm hoàn chỉnh.
+Mở `index.html` trực tiếp trong trình duyệt để chạy. Dữ liệu hiện là dữ liệu mô phỏng; khi tích hợp backend, thay mảng `equipment` và `alerts` trong `js/app.js` bằng API.
